@@ -6,13 +6,11 @@ class Car {
 
     accelerate() {
         this.speed += 10;
-        console.log(`${this.make} going at ${this.speed} km/h`);
+        console.log(`${this.make} is accelerating. Current speed: ${this.speed} km/h`);
     }
 
     brake() {
         this.speed -= 5;
-        console.log(`${this.make} going at ${this.speed} km/h`);
+        console.log(`${this.make} is braking. Current speed: ${this.speed} km/h`);
     }
 }
-
-module.exports = Car;

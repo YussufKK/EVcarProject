@@ -1,4 +1,3 @@
-const Car = require('./car');
 
 class EV extends Car {
     constructor(make, speed, charge) {
@@ -8,13 +7,12 @@ class EV extends Car {
 
     chargeBattery(chargeTo) {
         this.charge = chargeTo;
+        console.log(`${this.make} battery is charged to ${this.charge}%`);
     }
 
     accelerate() {
         this.speed += 20;
         this.charge -= 1;
-        console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`);
+        console.log(`${this.make} is accelerating. Current speed: ${this.speed} km/h, Charge: ${this.charge}%`);
     }
 }
-
-module.exports = EV;

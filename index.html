@@ -3,30 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electric Car Implementation</title>
+    <title>Electric Car Interaction</title>
 </head>
 <body>
-    <h1>Electric Car Implementation</h1>
-    <button onclick="accelerateCar()">Accelerate Car</button>
-    <button onclick="brakeCar()">Brake Car</button>
-    <button onclick="chargeBattery()">Charge Battery</button>
+    <h1>Electric Car Interaction</h1>
+    
+    <h2>Car</h2>
+    <label for="carMake">Make:</label>
+    <input type="text" id="carMake" placeholder="Enter car make"><br>
+
+    <label for="carSpeed">Speed:</label>
+    <input type="number" id="carSpeed" placeholder="Enter car speed"><br>
+
+    <button onclick="accelerateCar()">Accelerate</button>
+    <button onclick="brakeCar()">Brake</button><br><br>
+
+    <div id="carStatus"></div> <!-- Display current speed here -->
+
+    <h2>Electric Car (EV)</h2>
+    <label for="evMake">Make:</label>
+    <input type="text" id="evMake" placeholder="Enter EV make"><br>
+
+    <label for="evSpeed">Speed:</label>
+    <input type="number" id="evSpeed" placeholder="Enter EV speed"><br>
+
+    <label for="evCharge">Charge:</label>
+    <input type="number" id="evCharge" placeholder="Enter EV charge"><br>
+
+    <button onclick="accelerateEV()">Accelerate</button>
+    <button onclick="brakeEV()">Brake</button><br><br>
+
+    <div id="evStatus"></div> <!-- Display current speed and charge here -->
 
     <script src="Car.js"></script>
     <script src="EV.js"></script>
     <script>
-        // Test data
-        const tesla = new EV('Tesla', 120, 23);
-
         function accelerateCar() {
-            tesla.accelerate();
+            const make = document.getElementById('carMake').value;
+            const speed = parseFloat(document.getElementById('carSpeed').value);
+            const car = new Car(make, speed);
+            car.accelerate();
+            document.getElementById('carStatus').innerText = `${make} is accelerating. Current speed: ${car.speed} km/h`;
         }
 
         function brakeCar() {
-            tesla.brake();
+            const make = document.getElementById('carMake').value;
+            const speed = parseFloat(document.getElementById('carSpeed').value);
+            const car = new Car(make, speed);
+            car.brake();
+            document.getElementById('carStatus').innerText = `${make} is braking. Current speed: ${car.speed} km/h`;
         }
 
-        function chargeBattery() {
-            tesla.chargeBattery(50);
+        function accelerateEV() {
+            const make = document.getElementById('evMake').value;
+            const speed = parseFloat(document.getElementById('evSpeed').value);
+            const charge = parseFloat(document.getElementById('evCharge').value);
+            const ev = new EV(make, speed, charge);
+            ev.accelerate();
+            document.getElementById('evStatus').innerText = `${make} is accelerating. Current speed: ${ev.speed} km/h, Charge: ${ev.charge}%`;
+        }
+
+        function brakeEV() {
+            const make = document.getElementById('evMake').value;
+            const speed = parseFloat(document.getElementById('evSpeed').value);
+            const charge = parseFloat(document.getElementById('evCharge').value);
+            const ev = new EV(make, speed, charge);
+            ev.brake();
+            document.getElementById('evStatus').innerText = `${make} is braking. Current speed: ${ev.speed} km/h, Charge: ${ev.charge}%`;
         }
     </script>
 </body>
