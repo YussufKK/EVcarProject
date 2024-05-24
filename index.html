@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Car Implementation</title>
+</head>
+<body>
+    <h1>Electric Car Implementation</h1>
+    <button onclick="accelerateCar()">Accelerate Car</button>
+    <button onclick="brakeCar()">Brake Car</button>
+    <button onclick="chargeBattery()">Charge Battery</button>
+
+    <script src="Car.js"></script>
+    <script src="EV.js"></script>
+    <script>
+        // Test data
+        const tesla = new EV('Tesla', 120, 23);
+
+        function accelerateCar() {
+            tesla.accelerate();
+        }
+
+        function brakeCar() {
+            tesla.brake();
+        }
+
+        function chargeBattery() {
+            tesla.chargeBattery(50);
+        }
+    </script>
+</body>
+</html>
